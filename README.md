@@ -30,7 +30,7 @@ city
 ```
 
 ### Prompt
-You can choose from the following commands in CLIM.
+You can choose from the following commands in CLIMP.
 ```no-highlight
   	add				Add a person
    	print			Print everyone
@@ -49,3 +49,16 @@ You can choose from the following commands in CLIM.
 CLIMP uses [Ceasar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher “Wikipedia on Ceasar Cipher”) to encrypt and decrypt any stored information.
 
 Just like the rest of the code, the implementation of Ceasar Cipher was also written from scratch.
+
+# Getting started
+
+In your **shell**, browse to the **climp-java** folder and type:
+```
+$ javac *.java
+```
+Then run the program by typing:
+```
+$ java Main
+```
+
+Happy CLIMPing!
