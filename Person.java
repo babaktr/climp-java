@@ -1,14 +1,31 @@
+/**
+ * Person
+ * 
+ * @author  Babak Toghiani-Rizi
+ * @version 1.0
+ * @since   2015
+ */
+
 import java.util.*;
 import java.lang.*;
 
-public class Person{
-
+public class Person {
+	
+	/** Name variable */
 	private String name;
+	/** Surname variable */
 	private String surname;
+	/** Signature variable */
 	private String signature;
+	/** Length variable */
 	private int length;
+	/** Address variable */
 	private Address address;
 
+	/**
+	 * Class constructor.
+	 * @return A Person.
+	 */
 	public Person() {
 		setName("");
 		setSurname("");
@@ -17,6 +34,14 @@ public class Person{
 		setSignature("");
 	}
 
+	/**
+	 * Class constructor.
+	 * @param  n Name
+	 * @param  s Surname
+	 * @param  l Length
+	 * @param  a Address
+	 * @return   A Person with specified attributes.
+	 */
 	public Person(String n, String s, int l, Address a) {
 		setName(n);
 		setSurname(s);
@@ -24,22 +49,34 @@ public class Person{
 		setAddress(a);
 	}
 
-	//set name
+	/**
+	 * Name setter.
+	 * @param n Name.
+	 */
 	public void setName(String n) {
 		this.name = n;
 	}
 
-	//set surname
+	/**
+	 * Surname setter.
+	 * @param s Surname.
+	 */
 	public void setSurname(String s) {
 		this.surname = s;
 	}
 
-	//set signature
+	/**
+	 * Signature setter.
+	 * @param s Signature.
+	 */
 	public void setSignature(String s) {
 		this.signature = s;
 	}
 	
-	//set length
+	/**
+	 * Length setter.
+	 * @param l Length.
+	 */
 	public void setLength(int l){
 		//making sure that the length isn't negative
 		if(l < 0) {
@@ -48,37 +85,58 @@ public class Person{
 		this.length = l;
 	}
 
-	//set address
+	/**
+	 * Address setter.
+	 * @param a Address.
+	 */
 	public void setAddress(Address a) {
 		this.address = a;
 	}
 
-	//get name	
+	/**
+	 * Name getter.
+	 * @return Name.
+	 */
 	public String getName(){
 		return this.name;
 	}
 
-	//get surname
+	/**
+	 * Surname getter.
+	 * @return Surname.
+	 */
 	public String getSurname(){
 		return this.surname;
 	}
 
-	//get signature
+	/**
+	 * Signature getter.
+	 * @return Signature.
+	 */
 	public String getSignature(){
 		return this.signature;
 	}
 
-	//get length
+	/**
+	 * Length getter.
+	 * @return Length.
+	 */
 	public int getLength(){
 		return this.length;
 	}
 
-	//get address
+	/**
+	 * Address getter.
+	 * @return Address.
+	 */
 	public Address getAddress(){
 		return address;
 	}
 
-	//formatting length from cm to m
+	/**
+	 * Formats length from cm to m.
+	 * @return Formatted length.
+	 */
 	public String lengthToString(){
 		int m = length / 100;
 		int cm = length % 100;
@@ -86,12 +144,17 @@ public class Person{
 		return formatedLengthAsString;
 	}
 
-	//prints from the toString method
+	/**
+	 * Print.
+	 */
 	public void print() {
 		System.out.println(toString());
 	}
 
-	//formats the information of a Person
+	/**
+	 * Formats Person to string.
+	 * @return Formatted string.
+	 */
 	public String toString() {
 		return (String.format("%-14s %-28s %-4s", this.signature, this.name + " " + this.surname, this.lengthToString()));
 	}

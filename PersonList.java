@@ -1,41 +1,70 @@
+/**
+ * PersonList
+ * 
+ * @author  Babak Toghiani-Rizi
+ * @version 1.0
+ * @since   2015
+ */
 import java.util.*;
 import java.lang.*;
 
 public class PersonList{
 
+	/** Static array variable */
 	private static ArrayList<Person> personArray;
 
-	//initiates the array
+	/**
+	 * Initiates the PersonList.
+	 * @return PersonList.
+	 */
 	public PersonList(){
 		this.personArray = new ArrayList<Person>();
 	}
 
-	//replaces the array with a new one
+	/**
+	 * Replaces the array with a new one.
+	 * @param p New array.
+	 */
 	public void setArray(ArrayList<Person> p){
 		personArray = p;
 	}
 
-	//returns the array
+	/**
+	 * Array getter.
+	 * @return The array.
+	 */
 	public ArrayList<Person> getArray(){
 		return this.personArray;
 	}
 
-	//counts number of objects (Person) the array holds
+	/**
+	 * Counts number of objects (Person's) the array holds.
+	 * @return Number of objects.
+	 */
 	public int getNumberOfPersons(){
 		return this.personArray.size();
 	}
 
-	//returns the Person at a specific index
+	/**
+	 * Returns a Person at a specified index.
+	 * @param  i The specified index.
+	 * @return   The Person.
+	 */
 	public Person getPersonAtIndex(int i){
 		return this.personArray.get(i);
 	}
 
-	//wipes the array
+	/**
+	 * Wipes the array.
+	 */
 	public void wipeArray(){
 		this.personArray.clear();
 	}
 
-	//adds Person to array
+	/**
+	 * Adds a Person to the array.
+	 * @param p The Person to add.
+	 */
 	public void addPersonToArray(Person p){
 		//makes sure that the Person is given a unique signature
 		String str = createSignature(p.getName(), p.getSurname());
@@ -46,12 +75,20 @@ public class PersonList{
 		this.personArray.add(p);
 	}
 
-	//removes a Person at a specific index
+	/**
+	 * Removes a Person at a specified index.
+	 * @param i The specified index.
+	 */
 	public void removeObjectAtIndex(int i){
 		this.personArray.remove(i);
 	}
 
-	//creates a unique signature
+	/**
+	 * Generates a unique signature for a Person.
+	 * @param  n The name of the Person.
+	 * @param  s The surname of the Person.
+	 * @return   The unique signature.
+	 */
 	private String createSignature(String n, String s) {
 
 		//divides the signature into the first 3 letters and the last 3
@@ -98,7 +135,11 @@ public class PersonList{
 		return String.format(partOneAndTwo + "%02d", checkNumber);
 	}
 
-	//compares the input signature with signatures in the array
+	/**
+	 * Compares the input signature with other signatures in the array.
+	 * @param  s The signature to compare with.
+	 * @return   Number of similar signatures.
+	 */
 	private int checkSignatureDuplicates(String s){ 
 		String str = "";
 		int number = 0;

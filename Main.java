@@ -1,17 +1,34 @@
+/**
+ * Command-line Information Managing Prompt (CLIMP) was 
+ * created as a part of the Java course Computer Engineering BA (A),
+ * Java I, (7.5 Credits), given by the Mid Sweden University
+ * 
+ * @author  Babak Toghiani-Rizi
+ * @version 1.0
+ * @since   2015
+ */
+
 import java.io.*;
 import java.util.*;
 import java.lang.*;
 
+/**
+ * Main class that runs the program.
+ */
 public class Main {
 
 	private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	private boolean quit = false;
 	private String inputString;
 	
-	//instance
+	/** Instance variable */
 	private static String PROMPT = "input> ";
 
-	//start
+	/**
+	 * Runs the main program
+	 * @param  personList  An initiated PersonList.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void start(PersonList personList) throws IOException {
 
 		System.out.println("\nMain menu. Type 'help' for more info.\n");
@@ -70,12 +87,17 @@ public class Main {
 		} while (!quit);
 	}
 
+	/**
+	 * Quits the program.
+	 */
 	private void quit(){
 		System.out.println("Closing...");
 		quit = true;
 	}
 
-	//help
+	/**
+	 * Prints the available commands.
+	 */
 	public void help(){
 		System.out.println("You can choose from the following commands:");
 		System.out.println("   add			Add a person");
@@ -91,6 +113,11 @@ public class Main {
 
 	// ---------------------------------------------- SAVE METHODS ---------------------------------------------- // 
 
+	/**
+	 * Saves the data to a txt-file, encrypted with a specified key.
+	 * @param  personList  The PersonList to save.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void save(PersonList personList) throws IOException{
 		String fileName = "";
 
@@ -132,7 +159,12 @@ public class Main {
 		}
 	}
 
-	//method for shifting the letters, the shift steps taken is decided by the key (or in this case s)
+	/**
+	 * Implementation for ciphering a string Ceasar Cipher.
+	 * @param  m The string to cipher.
+	 * @param  s The key to cipher with.
+	 * @return   The ciphered string.
+	 */
 	private String cipher(String m, int s){
 		StringBuilder sb = new StringBuilder();
 		//String str = "";
@@ -144,8 +176,14 @@ public class Main {
 		
 		return sb.toString();
 	}
-		// ---------------------------------------------- OPEN METHODS ---------------------------------------------- //
 
+	// ---------------------------------------------- OPEN METHODS ---------------------------------------------- //
+
+	/**
+	 * Opens a previously saved file and encrypts it with a specified key.
+	 * @param  personList  An already initiated PersonList
+	 * @throws IOException If an I/O error occurs
+	 */
 	public void open(PersonList personList) throws IOException{
 		String fileName = "";
 		//asks the user for which file to open
@@ -214,7 +252,12 @@ public class Main {
 		}
 	}
 
-	//method to decipher it all, shifts back by s this time
+	/**
+	 * Implementation used to deciphering a string using Ceasar Chipher.
+	 * @param  m The string to decipher.
+	 * @param  s The key to decipher with.
+	 * @return   The deciphered string.
+	 */
 	private String decipher(String m, int s){
 		StringBuilder sb = new StringBuilder();
 		int length = m.length();
@@ -225,7 +268,11 @@ public class Main {
 		return sb.toString();
 	}
 	// ------------------------------------------- RANDOMIZING METHODS ------------------------------------------- //
-	// build in functon, randomizes the order of the array
+	
+	/**
+	 * Randomizes the order of entities in a PersonList.
+	 * @param personList The PersonList to randomize.
+	 */
 	public void randomize(PersonList personList){
 		Collections.shuffle(personList.getArray());
 		System.out.println("Array is now randomized.");
@@ -233,7 +280,11 @@ public class Main {
 
 	// ---------------------------------------------- SORT METHODS ---------------------------------------------- //
 
-
+	/**
+	 * Sorts a PersonList based on a specified attribute.
+	 * @param  personList  The PersonList to sort.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void sort(PersonList personList) throws IOException{
 		System.out.print("Sort based on... (name/surname/signature/length): ");
 		inputString = input.readLine();
@@ -297,6 +348,11 @@ public class Main {
 
 	// ----------------------------------- ADD METHODS ----------------------------------- //
 
+	/**
+	 * Adds a new Person to a PersonList with specified attributes. 
+	 * @param  personList  The PersonList to add the Person to.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void add(PersonList personList) throws IOException{
 		String name;
 		String surname;
@@ -361,6 +417,12 @@ public class Main {
 	}
 
 	//returns the edited Person with a new name, surname or length to test if she or he is unique now
+	/**
+	 * Edits a Person's attributes.
+	 * @param  p           The Person to edit.
+	 * @return             The edited Person.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	private Person editedPerson(Person p) throws IOException{
 		System.out.print("Select which data to edit (name/surname/length): ");
 		inputString = input.readLine();
@@ -384,11 +446,16 @@ public class Main {
 			System.out.println("Unknown commad, try again.");
 			break;
 		}
-
 		return p;
 	}
 
 	//loops to check if the input is a valid int
+	/**
+	 * Loops to check if a given Person length input is valid.
+	 * @param  s           The input string.
+	 * @return             The length
+	 * @throws IOException If an I/O error occurs.
+	 */
 	private int makeInputValid(String s) throws IOException{
 		boolean validIntCheck = true;
 		int length = 0;
@@ -411,6 +478,12 @@ public class Main {
 	}
 
 	//iterates through the array to see if any other person has the same name, surname and length
+	/**
+	 * Iterates trough an array to see if any other person has the same name, surname and length.
+	 * @param  p          The Person to compare with.
+	 * @param  personList The PersonList to search through.
+	 * @return            If a duplicate was found.
+	 */
 	private boolean duplicatePersonsInArray(Person p, PersonList personList){
 		boolean duplicate = false;
 
@@ -438,6 +511,11 @@ public class Main {
 	// ----------------------------------------  REMOVE METHODS ---------------------------------------- //
 
 	//removes person with a specific signature from the array
+	/**
+	 * Removes a person with a specified signature from the PersonList.
+	 * @param  personList  The PersonList to search through.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void remove(PersonList personList) throws IOException{
 		//make sure that the array is populated to being with
 		if(personList.getNumberOfPersons() > 0){
@@ -449,7 +527,11 @@ public class Main {
 		}
 	}
 
-	//iterates through the array, looking for a signature that matches the one we want to remove
+	/**
+	 * Iterates through the PersonList to look for a person with the specified signature.
+	 * @param s          The signature to look for.
+	 * @param personList The PersonList to search through.
+	 */
 	public void removeHelp(String s, PersonList personList){
 		boolean userFound = false;
 		Person p;
@@ -474,7 +556,11 @@ public class Main {
 
 	// ------------------------------------------ SEARCH  METHODS ------------------------------------------ //
 
-	//searches for a specific signature
+	/**
+	 * Searches for a Person with a specified signature.
+	 * @param  personList  The PersonList to look through.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void search(PersonList personList) throws IOException{
 
 		//makes sure the array is even populated to begin with
@@ -487,7 +573,11 @@ public class Main {
 		}
 	}
 
-	//searches for a match in the array
+	/**
+	 * Searches for a match in PersonList.
+	 * @param s          The signature to search for.
+	 * @param personList The PersonList to search through.
+	 */
 	private void searchHelp(String s, PersonList personList){
 		Person p;
 		boolean found = false;
@@ -511,7 +601,10 @@ public class Main {
 
 	// ------------------------------------------ PRINT METHODS  ------------------------------------------ //
 
-	//print method for printing one Person only
+	/**
+	 * Prints one specified Person.
+	 * @param p The Person's information to print.
+	 */
 	private void printOne(Person p){
 		System.out.println("Person found:");
 		//formatting the output
@@ -519,6 +612,11 @@ public class Main {
 		p.print();
 	}
 
+	/**
+	 * Prints all Persons in the PersonList.
+	 * @param  personList  The PersonList to print from.
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public void printAll(PersonList personList) throws IOException{
 		int extra = 0;
 		int a = 0;
@@ -549,7 +647,11 @@ public class Main {
 
 	// ------------------------------------------------ MAIN ------------------------------------------------ //
 
-	//main method
+	/**
+	 * Main method, starts the program.
+	 * @param  args        Arguments
+	 * @throws IOException If an I/O error occurs.
+	 */
 	public static void main(String[] args) throws IOException {
 		//an array is created to, later on, populate with Person-objects
 		PersonList personList = new PersonList();
