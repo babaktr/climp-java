@@ -1,5 +1,5 @@
 # Command-line Information Manager Prompt
-Command-line Information Managing Prompt (CLIMP) was created as a part of the Java course **Computer Engineering BA (A), Java I**, (7.5 Credits), given by the Mid Sweden University. The project part of the course (2.5 Credits), in which CLIMP was written, ran from early March to late April.
+Command-line Information Managing Prompt (CLIMP) was created as a part of the course **Computer Engineering BA (A), Java I**, (7.5 Credits), given by the Mid Sweden University in 2015. The project part of the course (2.5 Credits), in which CLIMP was written, ran from early March to late April.
 
 All implementation was written from scratch and no frameworks were used.
 
